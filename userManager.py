@@ -1,5 +1,4 @@
 # Methods to create users and validate user logins
-import main
 import hashlib
 import json
 import os
@@ -67,5 +66,3 @@ def valid_user(username):
                 else:
                     continue
             return True
-
-

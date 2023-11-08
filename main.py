@@ -1,3 +1,4 @@
+# todo: add comments to the code, finish userManager.login() method next
 import userManager
 
 
@@ -19,8 +20,6 @@ def welcome():
             print("Invalid Input! only enter a number..")
 
     return userinput
-
-
 
 
 if __name__ == '__main__':
