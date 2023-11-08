@@ -2,6 +2,7 @@
 import hashlib
 import json
 import os
+import time
 
 
 def hash_password(password):
@@ -17,7 +18,7 @@ def new_user():
 
         # an option to cancel signup process and return to welcome screen
         if username == 'q':
-            return False
+            return False, None
         elif valid_user(username):
             break
         else:
@@ -47,11 +48,38 @@ def new_user():
             json.dump([user], userData, indent=4)
 
     print("Account Successfully created!")
-    return True
+    return True, username
 
 
 def login():
-    pass
+    print("------Login to your account------")
+    fail_count = 0
+    while True:
+        if fail_count < 5:
+            username = input("Enter username: ")
+            password = hash_password(input("Enter password:"))
+
+            if os.path.getsize("userData.json") == 0:
+                print("\nuser doesn't exist! create an account!\n")
+                time.sleep(3)
+                return False, None
+
+            with open("userData.json", "r") as userJson:
+                for user in json.load(userJson):
+                    if username == user["username"]:
+                        if password == user["password"]:
+                            return True, username
+                        else:
+                            print("invalid username/password, please try again!")
+                            fail_count += 1
+                            continue
+                    else:
+                        print("invalid username/password, please try again!")
+                        fail_count += 1
+                        continue
+        else:
+            print("Login failed too many times!!")
+            return False, None
 
 
 def valid_user(username):

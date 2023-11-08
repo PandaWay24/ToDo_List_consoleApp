@@ -1,5 +1,6 @@
-# todo: add comments to the code, finish userManager.login() method next
+# todo: add comments to the code,
 import userManager
+import taskManager
 
 
 def welcome():
@@ -22,18 +23,53 @@ def welcome():
     return userinput
 
 
+def task_manage(menu_option, logged_username):
+    while True:
+        match menu_option:
+            case 1:
+                result = taskManager.add(logged_username)
+                if result:
+                    taskManager.view(username)
+            case 2:
+                pass
+            case 3:
+                pass
+            case 4:
+                pass
+            case 5:
+                break
+            case _:
+                print("error!! option didn't match!!!")
+
+
 if __name__ == '__main__':
     while True:
         match welcome():
             case 1:
-                pass
-            case 2:
-                if not userManager.new_user():
+                logged, username = userManager.login()
+                if not logged:
                     continue
                 else:
-                    print("go to task manager screen here!")
-                    exit()
+                    option = taskManager.manager_menu(username)
+                    if option:
+                        task_manage(option, username)
+                    else:
+                        print("Error!! Option returned False!!")
+
+            case 2:
+                logged, username = userManager.new_user()
+                if logged:
+                    option = taskManager.manager_menu(username)
+                    if option:
+                        task_manage(option, username)
+                    else:
+                        print("Error!! Option returned False!!")
+                else:
+                    print("User not created!!")
+                    continue
+
             case 3:
                 exit()
+
             case _:
                 print("an error occurred in match case statement..!")
