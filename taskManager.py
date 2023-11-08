@@ -1,5 +1,4 @@
 # Methods to manage the tasks in to do list
-
 def manager_menu():
     pass
 
