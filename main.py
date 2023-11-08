@@ -1,4 +1,4 @@
-# todo: add comments to the code,
+# todo: add comments to the code, fix the issue in login method
 import userManager
 import taskManager
 
@@ -24,22 +24,34 @@ def welcome():
 
 
 def task_manage(menu_option, logged_username):
-    while True:
-        match menu_option:
-            case 1:
-                result = taskManager.add(logged_username)
-                if result:
-                    taskManager.view(username)
-            case 2:
-                pass
-            case 3:
-                pass
-            case 4:
-                pass
-            case 5:
-                break
-            case _:
-                print("error!! option didn't match!!!")
+    match menu_option:
+        case 1:
+            result = taskManager.add(logged_username)
+            if result:
+                taskManager.view(username)
+                while True:
+                    add_more = input("\nContinue adding tasks (y/n): ")
+                    if add_more.lower() == "y":
+                        result = taskManager.add(logged_username)
+                    elif add_more.lower() == "n":
+                        return False
+                    else:
+                        print("Invalid input!! Try again!!")
+                        continue
+            else:
+                print("adding tasks unsuccessful!!")
+        case 2:
+            pass
+        case 3:
+            pass
+        case 4:
+            pass
+        case 5:
+            return True
+        case _:
+            print("error!! option didn't match!!!")
+
+    return False
 
 
 if __name__ == '__main__':
@@ -50,11 +62,16 @@ if __name__ == '__main__':
                 if not logged:
                     continue
                 else:
-                    option = taskManager.manager_menu(username)
-                    if option:
-                        task_manage(option, username)
-                    else:
-                        print("Error!! Option returned False!!")
+                    while True:
+                        option = taskManager.manager_menu(username)
+                        if option:
+                            logout = task_manage(option, username)
+                            if logout:
+                                break
+                            else:
+                                continue
+                        else:
+                            print("Error!! Option returned False!!")
 
             case 2:
                 logged, username = userManager.new_user()

@@ -1,3 +1,4 @@
+# todo: fix the issue in the login method, printing invalid info message
 # Methods to create users and validate user logins
 import hashlib
 import json
@@ -55,6 +56,7 @@ def login():
     print("------Login to your account------")
     fail_count = 0
     while True:
+        print("login loop started")
         if fail_count < 5:
             username = input("Enter username: ")
             password = hash_password(input("Enter password:"))

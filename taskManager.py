@@ -6,7 +6,7 @@ import re
 
 def manager_menu(username):
     print(f"Hello {username}, What would you like to do today?\n")
-    print("[1] Add a new task \n[2] View my tasks list \n[3] Update a task \n[4] Delete a task\n \n[5] Log Out")
+    print("[1] Add a new task \n[2] View my tasks list \n[3] Update a task \n[4] Delete a task\n-----\n[5] Log Out\n")
 
     option = False
 
@@ -23,59 +23,56 @@ def manager_menu(username):
 
 
 def add(username):
-    try:
-        print("------Adding a new task------")
-        print("*Title cannot be empty, leave other info empty if you want to add later!")
-        while True:
-            title = input("Enter task Title: ")
+    print("------Adding a new task------")
+    print("*Title cannot be empty, leave other info empty if you want to add later!")
+    while True:
+        title = input("Enter task Title: ")
 
-            if not title.strip():
-                print("Task Title cannot be empty!! Try Again!!")
+        if not title.strip():
+            print("Task Title cannot be empty!! Try Again!!")
+            continue
+        else:
+            break
+
+    description = input("Enter Description: ")
+
+    while True:
+        due = input("Enter Due Date (dd/mm/yyyy): ")
+
+        due = due.strip()
+
+        if due:
+            if re.search("^\d\d/\d\d/\d\d\d\d$", due):
+                break
+            else:
+                print("Invalid Format!! use this format with digits: dd/mm/yyyy")
                 continue
-            else:
-                break
+        else:
+            break
 
-        description = input("Enter Description: ")
+    tags = input("Enter Tags (separate with commas): ")
 
-        while True:
-            due = input("Enter Due Date (dd/mm/yyyy): ")
+    task = {"title": title, "description": description, "due date": due, "tags": tags.split(",")}
 
-            due = due.strip()
+    if os.path.getsize("taskData.json") == 0:
+        with open("taskData.json", "w") as taskJson:
+            json.dump({username: [task]}, taskJson, indent=4)
 
-            if due:
-                if re.search("^\d\d/\d\d/\d\d\d\d$", due):
-                    break
-                else:
-                    print("Invalid Format!! use this format with digits: dd/mm/yyyy")
-                    continue
-            else:
-                break
+    else:
+        with open("taskData.json", "r") as taskJson:
+            tasks = json.load(taskJson)
 
-        tags = input("Enter Tags (separate with commas): ")
-
-        task = {"title": title, "description": description, "due date": due, "tags":tags.split(",")}
-
-        if os.path.getsize("taskData.json") == 0:
+        if username in tasks.keys():
+            user_tasks = tasks[username]
+            with open("taskData.json", "w") as taskJson:
+                json.dump({username: user_tasks + [task]}, taskJson, indent=4)
+        else:
             with open("taskData.json", "w") as taskJson:
                 json.dump({username: [task]}, taskJson, indent=4)
 
-        else:
-            with open("taskData.json", "r") as taskJson:
-                users = json.load(taskJson).keys()
-                if username in users:
-                    user_tasks = json.load(taskJson)[username]
-                    with open("taskData.json", "w") as taskJson:
-                        json.dump({username: user_tasks + [task]}, taskJson, indent=4)
-                else:
-                    with open("taskData.json", "w") as taskJson:
-                        json.dump({username: [task]}, taskJson, indent=4)
+    view(username)
+    return True
 
-        view(username)
-        return True
-
-    except Exception as e:
-        print(e)
-        return False
 
 
 def view(username):
