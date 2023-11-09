@@ -1,9 +1,11 @@
-# todo: add comments to the code, fix the issue in login method
+# todo: add comments to the code, taskManager view, update and delete methods left to build
 import userManager
 import taskManager
+import os
 
 
 def welcome():
+    os.system('cls')
     print("-----Welcome to To Do List Manager-----\n")
     print("Select one of the options below:")
     print("[1] Login \n[2] Sign Up \n[3] Quit\n")
@@ -30,7 +32,7 @@ def task_manage(menu_option, logged_username):
             if result:
                 taskManager.view(username)
                 while True:
-                    add_more = input("\nContinue adding tasks (y/n): ")
+                    add_more = input("\nContinue adding tasks? (y/n): ")
                     if add_more.lower() == "y":
                         result = taskManager.add(logged_username)
                     elif add_more.lower() == "n":

@@ -1,4 +1,3 @@
-# todo: fix the issue in the login method, printing invalid info message
 # Methods to create users and validate user logins
 import hashlib
 import json
@@ -11,7 +10,8 @@ def hash_password(password):
 
 
 def new_user():
-    print("--New User Sign Up--")
+    os.system('cls')
+    print("--New User Sign Up--\n")
 
     # repeat asking for a new username if the username entered already exists
     while True:
@@ -53,10 +53,10 @@ def new_user():
 
 
 def login():
-    print("------Login to your account------")
+    os.system('cls')
+    print("------Login to your account------\n")
     fail_count = 0
     while True:
-        print("login loop started")
         if fail_count < 5:
             username = input("Enter username: ")
             password = hash_password(input("Enter password:"))
@@ -71,14 +71,8 @@ def login():
                     if username == user["username"]:
                         if password == user["password"]:
                             return True, username
-                        else:
-                            print("invalid username/password, please try again!")
-                            fail_count += 1
-                            continue
-                    else:
-                        print("invalid username/password, please try again!")
-                        fail_count += 1
-                        continue
+                print("invalid username/password, please try again!")
+                fail_count += 1
         else:
             print("Login failed too many times!!")
             return False, None
@@ -96,3 +90,7 @@ def valid_user(username):
                 else:
                     continue
             return True
+
+
+if __name__ == "__main__":
+    login()

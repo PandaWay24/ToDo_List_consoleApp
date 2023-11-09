@@ -2,9 +2,11 @@
 import json
 import os
 import re
+import os
 
 
 def manager_menu(username):
+    os.system('cls')
     print(f"Hello {username}, What would you like to do today?\n")
     print("[1] Add a new task \n[2] View my tasks list \n[3] Update a task \n[4] Delete a task\n-----\n[5] Log Out\n")
 
@@ -23,8 +25,9 @@ def manager_menu(username):
 
 
 def add(username):
-    print("------Adding a new task------")
-    print("*Title cannot be empty, leave other info empty if you want to add later!")
+    os.system('cls')
+    print("------Adding a new task------\n")
+    print("*Title cannot be empty, leave other info empty if you want to add later!\n")
     while True:
         title = input("Enter task Title: ")
 
@@ -74,8 +77,8 @@ def add(username):
     return True
 
 
-
 def view(username):
+    os.system('cls')
     with open("taskData.json", "r") as taskJson:
         user_tasks = json.load(taskJson)[username]
         print(user_tasks)
@@ -87,3 +90,7 @@ def update():
 
 def delete():
     pass
+
+
+if __name__ == "__main__":
+    manager_menu("mmm")
