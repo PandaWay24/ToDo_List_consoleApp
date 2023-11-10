@@ -15,7 +15,11 @@ def manager_menu(username):
     while True:
         try:
             option = int(input("Enter number: "))
-            break
+            if option < 1 or option > 5:
+                print("Invalid Input! only enter a number..")
+                continue
+            else:
+                break
 
         except ValueError:
             print("Invalid Input! only enter a number..")
@@ -73,7 +77,9 @@ def add(username):
             with open("taskData.json", "w") as taskJson:
                 json.dump({username: [task]}, taskJson, indent=4)
 
-    view(username)
+    print("\nFollowing task has been added successfully:")
+    print(f"\nTitle: {task['title']}\nDescription: {task['description']}\nDue Date:{task['due date']}"
+          f"\nTags:{task['tags']}\n")
     return True
 
 
@@ -81,7 +87,13 @@ def view(username):
     os.system('cls')
     with open("taskData.json", "r") as taskJson:
         user_tasks = json.load(taskJson)[username]
-        print(user_tasks)
+
+    count = 0
+    for task in user_tasks:
+        count += 1
+        # print(task)
+        print(f"Title: {task['title']}\nDescription: {task['description']}\nDue Date:{task['due date']}"
+              f"\nTags:{task['tags']}\n")
 
 
 def update():
@@ -93,4 +105,4 @@ def delete():
 
 
 if __name__ == "__main__":
-    manager_menu("mmm")
+    view("mmm")
