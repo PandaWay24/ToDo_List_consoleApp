@@ -42,12 +42,18 @@ def manager_menu(username):
                 case 2:
                     tags = None
                     while True:
-                        view(username, tags)
-                        view_option = input("[ok] if done viewing, [f] to filter by tag, [x] to remove filters: ").lower()
+                        got_tasks = view(username, tags)
+                        if got_tasks:
+                            view_option = input("[ok] if done viewing, [f] to filter by tag, [x] to remove filters: ").lower()
+                        else:
+                            print("You currently don't have any task, Try adding tasks first!!")
+                            input("Press [enter] to return to task menu: ")
+                            break
                         if view_option == "ok":
                             break
                         elif view_option == "f":
                             tags = input("Enter tag/s you want to filter by (separate with commas ','): ").split(',')
+                            tags = [t.strip() for t in tags]
                             continue
                         elif view_option == "x":
                             tags = None
@@ -93,9 +99,10 @@ def add(username):
         else:
             break
 
-    tags = input("Enter Tags (separate with commas): ")
+    tags = input("Enter Tags (separate with commas): ").split(',')
+    tags = [t.strip() for t in tags]
 
-    task = {"title": title, "description": description, "due date": due, "tags": tags.split(",")}
+    task = {"ID": 1, "Title": title, "Description": description, "Due Date": due, "Tags": tags}
 
     if os.path.getsize("taskData.json") == 0:
         with open("taskData.json", "w") as taskJson:
@@ -107,13 +114,15 @@ def add(username):
 
         if username in tasks.keys():
             user_tasks = tasks[username]
+            task['ID'] = len(user_tasks) + 1
+
             with open("taskData.json", "w") as taskJson:
                 json.dump({username: user_tasks + [task]}, taskJson, indent=4)
         else:
             with open("taskData.json", "w") as taskJson:
                 json.dump({username: [task]}, taskJson, indent=4)
 
-    print("\nFollowing task has been added successfully:")
+    print("\nFollowing task has been added successfully:\n")
     print_task(task)
 
     return True
@@ -122,7 +131,10 @@ def add(username):
 def view(username, tags=None):
     os.system('cls')
     with open("taskData.json", "r") as taskJson:
-        user_tasks = json.load(taskJson)[username]
+        try:
+            user_tasks = json.load(taskJson)[username]
+        except KeyError:
+            return False
 
     count = 0
     if not tags:
@@ -132,9 +144,10 @@ def view(username, tags=None):
     else:
         for task in user_tasks:
             count += 1
-            for tag in tags:
-                if tag in task['tags']:
-                    print_task(task)
+            if all(tag in task['Tags'] for tag in tags):
+                print_task(task)
+
+    return True
 
 
 def update():
@@ -146,10 +159,10 @@ def delete():
 
 
 def print_task(task):
-    print(f"      Title: {task['title']}\n"
-          f"Description: {task['description']}\n"
-          f"   Due Date: {task['due date']}\n"
-          f"       Tags: {task['tags']}\n")
+    print(f"      Title: {task['Title']}\n"
+          f"Description: {task['Description']}\n"
+          f"   Due Date: {task['Due Date']}\n"
+          f"       Tags: {task['Tags']}\n")
 
 
 if __name__ == "__main__":

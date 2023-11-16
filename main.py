@@ -48,11 +48,13 @@ def welcome():
                             welcome_screen()
                             continue
                     case 3:
+                        os.system('cls')
                         exit()
 
                     case _:
                         os.system('cls')
-                        print("Unknown option number!! Enter the number in front of the action you want to perform..\n")
+                        print("Unknown option number!! "
+                              "Enter the number in front of the action you want to perform..\n")
                         welcome_screen()
                         continue
             # if it's not a number error message is printed and loop continue to prompt input

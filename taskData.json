@@ -1,166 +1,45 @@
 {
     "mmm": [
         {
-            "title": "mt11",
-            "description": "mtsddd",
-            "due date": "",
-            "tags": [
-                ""
+            "ID": 1,
+            "Title": "Clean Bedroom",
+            "Description": "Fold laudry and make the bed, then vaccum the floor.",
+            "Due Date": "17/11/2023",
+            "Tags": [
+                "household",
+                "cleaning"
             ]
         },
         {
-            "title": "mtttt",
-            "description": "",
-            "due date": "",
-            "tags": [
-                ""
+            "ID": 2,
+            "Title": "Cook meals for the week",
+            "Description": "cook meals and put then in a box and store in fridge",
+            "Due Date": "18/11/2023",
+            "Tags": [
+                "household",
+                "cooking"
             ]
         },
         {
-            "title": "dd",
-            "description": "",
-            "due date": "",
-            "tags": [
-                ""
+            "ID": 3,
+            "Title": "Cook a meal for a sick friend",
+            "Description": "prepare a healthy meal and deliver it to my sick friend",
+            "Due Date": "20/11/2023",
+            "Tags": [
+                "cooking",
+                "for a friend",
+                "social"
             ]
         },
         {
-            "title": "q",
-            "description": "q",
-            "due date": "",
-            "tags": [
-                ""
-            ]
-        },
-        {
-            "title": "msndk",
-            "description": "kkkllqq",
-            "due date": "",
-            "tags": [
-                ""
-            ]
-        },
-        {
-            "title": "asas",
-            "description": "sa",
-            "due date": "",
-            "tags": [
-                "www"
-            ]
-        },
-        {
-            "title": "dsds",
-            "description": "efef",
-            "due date": "",
-            "tags": [
-                "www"
-            ]
-        },
-        {
-            "title": "wddefdef",
-            "description": "efef",
-            "due date": "",
-            "tags": [
-                ""
-            ]
-        },
-        {
-            "title": "sdsdd",
-            "description": "aawqe",
-            "due date": "23/12/2023",
-            "tags": [
-                ""
-            ]
-        },
-        {
-            "title": "sswswsw",
-            "description": "qwqw",
-            "due date": "09/08/2024",
-            "tags": [
-                ""
-            ]
-        },
-        {
-            "title": "mmmmmllll",
-            "description": "",
-            "due date": "",
-            "tags": [
-                "lkkkk"
-            ]
-        },
-        {
-            "title": "hthdf",
-            "description": "",
-            "due date": "",
-            "tags": [
-                ""
-            ]
-        },
-        {
-            "title": "gvvvv",
-            "description": "",
-            "due date": "",
-            "tags": [
-                ""
-            ]
-        },
-        {
-            "title": "nnk;kn",
-            "description": "jjjhhk",
-            "due date": "",
-            "tags": [
-                ""
-            ]
-        },
-        {
-            "title": "kkjjk",
-            "description": "llkk",
-            "due date": "",
-            "tags": [
-                ""
-            ]
-        },
-        {
-            "title": "jjjkk",
-            "description": "",
-            "due date": "",
-            "tags": [
-                ""
-            ]
-        },
-        {
-            "title": "mmmmmmklll",
-            "description": "",
-            "due date": "",
-            "tags": [
-                ""
-            ]
-        },
-        {
-            "title": "nnnnkkjhk",
-            "description": "",
-            "due date": "",
-            "tags": [
-                ""
-            ]
-        },
-        {
-            "title": "hhjkkkkk",
-            "description": "ioono",
-            "due date": "",
-            "tags": [
-                "nn",
-                " mm",
-                " kkj",
-                " mnnn"
-            ]
-        },
-        {
-            "title": "nnn",
-            "description": "",
-            "due date": "",
-            "tags": [
-                ""
+            "ID": 4,
+            "Title": "Wash Car",
+            "Description": "go to the self car wash and wash outside and vaccum inside",
+            "Due Date": "21/11/2023",
+            "Tags": [
+                "car",
+                "cleaning",
+                "errand"
             ]
         }
     ]
