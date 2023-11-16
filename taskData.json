@@ -1,46 +1,44 @@
-{
-    "mmm": [
-        {
-            "ID": 1,
-            "Title": "Clean Bedroom",
-            "Description": "Fold laudry and make the bed, then vaccum the floor.",
-            "Due Date": "17/11/2023",
-            "Tags": [
-                "household",
-                "cleaning"
-            ]
-        },
-        {
-            "ID": 2,
-            "Title": "Cook meals for the week",
-            "Description": "cook meals and put then in a box and store in fridge",
-            "Due Date": "18/11/2023",
-            "Tags": [
-                "household",
-                "cooking"
-            ]
-        },
-        {
-            "ID": 3,
-            "Title": "Cook a meal for a sick friend",
-            "Description": "prepare a healthy meal and deliver it to my sick friend",
-            "Due Date": "20/11/2023",
-            "Tags": [
-                "cooking",
-                "for a friend",
-                "social"
-            ]
-        },
-        {
-            "ID": 4,
-            "Title": "Wash Car",
-            "Description": "go to the self car wash and wash outside and vaccum inside",
-            "Due Date": "21/11/2023",
-            "Tags": [
-                "car",
-                "cleaning",
-                "errand"
-            ]
-        }
-    ]
-}
+[
+    {
+        "mmm": [
+            {
+                "ID": 1,
+                "Title": "Meal prep for the week",
+                "Description": "pasta with minced chiken and cheese",
+                "Due Date": "18/11/2023",
+                "Tags": [
+                    "cooking",
+                    "household"
+                ]
+            }
+        ]
+    },
+    {
+        "ddd": [
+            {
+                "ID": 1,
+                "Title": "Car wash",
+                "Description": "go to self wash carwash, vac and clean",
+                "Due Date": "18/11/2023",
+                "Tags": [
+                    "car",
+                    "cleaning",
+                    "errand"
+                ]
+            }
+        ]
+    },
+    {
+        "ddd": [
+            {
+                "ID": 2,
+                "Title": "Gardening",
+                "Description": "dsd",
+                "Due Date": "",
+                "Tags": [
+                    ""
+                ]
+            }
+        ]
+    }
+]
